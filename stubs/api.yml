@@ -1,0 +1,43 @@
+- request:
+    url: ^/contacts/?$
+    method: GET
+  response:
+    status: 200
+    latency: 50
+    headers:
+      content-type: application/json
+      server: stubbedServer/4.2
+    file: contacts/all.json
+
+- request:
+    url: ^/contacts/(\d+)$
+    method: GET
+  response:
+    status: 200
+    latency: 50
+    headers:
+      content-type: application/json
+      server: stubbedServer/4.2
+    file: contacts/<% url[1] %>.json
+
+- request:
+    url: ^/groups/?$
+    method: GET
+  response:
+    status: 200
+    latency: 50
+    headers:
+      content-type: application/json
+      server: stubbedServer/4.2
+    file: groups/all.json
+
+- request:
+    url: ^/groups/(\d+)$
+    method: GET
+  response:
+    status: 200
+    latency: 50
+    headers:
+      content-type: application/json
+      server: stubbedServer/4.2
+    file: groups/<% url[1] %>.json
