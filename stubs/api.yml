@@ -20,6 +20,18 @@
       server: stubbedServer/4.2
     file: contacts/<% url[1] %>.json
 
+# Posting
+- request:
+    url: ^/contacts/?$
+    method: POST
+  response:
+    status: 200
+    latency: 0
+    headers:
+      content-type: application/json
+      server: stubbedServer/4.2
+    body: '{ "result": true, "message": "Contact created successfully" }'
+
 - request:
     url: ^/groups/?$
     method: GET

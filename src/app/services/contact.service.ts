@@ -16,4 +16,8 @@ export class ContactService {
   getContactById(contactId: number) {
     return this.http.get<Array<any>>(`${this.base_url}/contacts/${contactId}`);
   }
+
+  send(model: any) {
+    return this.http.post(`${this.base_url}/contacts/`, model);
+  }
 }
