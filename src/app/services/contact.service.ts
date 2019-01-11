@@ -10,7 +10,7 @@ export class ContactService {
   constructor(private http: HttpClient) {}
 
   getContactsList() {
-    this.http.get<Array<any>>(`${this.base_url}/contacts`);
+    return this.http.get<Array<any>>(`${this.base_url}/contacts`);
   }
 
   getContactById(contactId: number) {
