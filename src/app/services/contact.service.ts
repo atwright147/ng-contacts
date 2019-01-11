@@ -14,6 +14,6 @@ export class ContactService {
   }
 
   getContactById(contactId: number) {
-    this.http.get<Array<any>>(`${this.base_url}/contact/${contactId}`);
+    return this.http.get<Array<any>>(`${this.base_url}/contacts/${contactId}`);
   }
 }
