@@ -12,11 +12,11 @@ const routes: Routes = [
     component: ContactsListComponent,
   },
   {
-    path: 'contact/create',
+    path: 'contact/create/template',
     component: ContactsFormComponent,
   },
   {
-    path: 'contact/reactive',
+    path: 'contact/create/reactive',
     component: ContactsFormReactiveComponent,
   },
   {
