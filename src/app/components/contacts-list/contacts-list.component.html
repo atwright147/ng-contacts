@@ -10,7 +10,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let contact of contacts">
+    <tr *ngFor="let contact of contacts" [routerLink]="['contact', contact.id]">
       <td>{{ contact.id }}</td>
       <td>{{ contact.firstName }} {{ contact.surname }}</td>
       <td>{{ contact.email }}</td>
