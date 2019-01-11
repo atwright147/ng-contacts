@@ -22,6 +22,6 @@ export class ContactsFormComponent implements OnInit {
 
   onSubmit() {
     console.info('Sending: ', this.model);
-    this.Contact.send(this.model).subscribe(data => this.response = data);
+    this.Contact.send(this.model).subscribe(console.info);
   }
 }
