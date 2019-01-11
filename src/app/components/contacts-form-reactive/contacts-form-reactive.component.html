@@ -1,0 +1,34 @@
+<h1>Edit or Create a Contact</h1>
+
+<a routerLink="/">Back to contacts list</a>
+
+<form
+  [formGroup]="contactForm"
+  (ngSubmit)="onSubmit()"
+  autocomplete="off"
+>
+  <div class="field">
+    <label for="name">First name</label>
+    <input type="text" id="firstName" name="firstName" formControlName="firstName">
+  </div>
+
+  <div class="field">
+    <label for="surname">Surname</label>
+    <input type="text" id="surname" name="surname" formControlName="surname">
+  </div>
+
+  <div class="field">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" formControlName="email">
+  </div>
+
+  <div class="field">
+    <label for="groupId">Group ID</label>
+    <input type="number" id="groupId" name="groupId" formControlName="groupId">
+  </div>
+
+  <button type="submit" class="button button-success">Submit</button>
+
+</form>
+
+<em>Model Driven Form</em>
