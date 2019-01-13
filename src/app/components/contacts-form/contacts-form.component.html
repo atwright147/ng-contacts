@@ -67,7 +67,7 @@
     </div>
   </div>
 
-  <button type="submit" class="button button-success">Submit</button>
+  <button [disabled]="contactForm.form.invalid" type="submit" class="button button-success">Submit</button>
 
 </form>
 
