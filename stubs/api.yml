@@ -3,7 +3,7 @@
     method: GET
   response:
     status: 200
-    latency: 50
+    latency: 300
     headers:
       content-type: application/json
       server: stubbedServer/4.2
@@ -14,7 +14,7 @@
     method: GET
   response:
     status: 200
-    latency: 50
+    latency: 750
     headers:
       content-type: application/json
       server: stubbedServer/4.2
