@@ -1,0 +1,27 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  td,
+  th {
+    padding: .7rem;
+  }
+
+  thead {
+    th {
+      text-align: left;
+    }
+  }
+
+  tbody {
+    tr {
+      border: 1px solid #ddd;
+      border-left: 0;
+      border-right: 0;
+    }
+    tr:hover td {
+      background-color: #eee;
+      cursor: pointer;
+    }
+  }
+}
