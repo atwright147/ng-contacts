@@ -11,15 +11,23 @@ import { ContactService } from '../../services/contact.service';
 export class ContactsFormReactiveComponent implements OnInit {
   // https://youtu.be/VLYc3ACWL-E
   contactForm: FormGroup;
+  contact: any;
 
   constructor(private Contact: ContactService) { }
 
   ngOnInit() {
     this.contactForm = new FormGroup({
+      id: new FormControl(),
       firstName: new FormControl(),
       surname: new FormControl(),
       email: new FormControl(),
       groupId: new FormControl(),
+    });
+
+    this.Contact.getContactById(1).subscribe(data => {
+      // FROM: https://medium.com/@samichkhachkhi/setvalue-vs-patchvalue-angular-a64a55e912b8
+      // this.contactForm.patchValue(data);  // when you want to load a partial payload
+      this.contactForm.setValue(data);  // when you can guarantee a full payload
     });
   }
 
