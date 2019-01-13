@@ -17,12 +17,7 @@ interface ContactFormModel {
 })
 export class ContactsFormComponent implements OnInit {
   response: any;
-  model: ContactFormModel = {
-    firstName: '',
-    surname: '',
-    email: '',
-    groupId: '',
-  };
+  model;
 
   constructor(private Contact: ContactService) {}
 
