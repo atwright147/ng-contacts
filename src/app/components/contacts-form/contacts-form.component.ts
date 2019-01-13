@@ -2,6 +2,14 @@ import { Component, OnInit } from '@angular/core';
 
 import { ContactService } from '../../services/contact.service';
 
+interface ContactFormModel {
+  id?: number;
+  firstName: string;
+  surname: string;
+  email: string;
+  groupId?: string;
+}
+
 @Component({
   selector: 'app-contacts-form',
   templateUrl: './contacts-form.component.html',
@@ -9,7 +17,7 @@ import { ContactService } from '../../services/contact.service';
 })
 export class ContactsFormComponent implements OnInit {
   response: any;
-  model = {
+  model: ContactFormModel = {
     firstName: '',
     surname: '',
     email: '',
