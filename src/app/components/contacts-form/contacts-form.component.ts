@@ -18,7 +18,13 @@ export class ContactsFormComponent implements OnInit {
 
   constructor(private Contact: ContactService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.Contact.getContactById(1).subscribe(data => {
+      // FROM: https://medium.com/@samichkhachkhi/setvalue-vs-patchvalue-angular-a64a55e912b8
+      // this.contactForm.patchValue(data);  // when you want to load a partial payload
+      this.model = data;  // when you can guarantee a full payload
+    });
+  }
 
   onSubmit() {
     console.info('Sending: ', this.model);
