@@ -12,6 +12,7 @@ export class ContactsDetailComponent implements OnInit {
   contact: any;
   contactId: number;
   sub: any;
+  loaded: boolean = false;
 
   constructor(
     private Contact: ContactService,
@@ -23,7 +24,11 @@ export class ContactsDetailComponent implements OnInit {
       this.contactId = params.contactId;
     });
 
-    this.Contact.getContactById(this.contactId).subscribe(data => this.contact = data);
+    this.Contact.getContactById(this.contactId).subscribe(
+      data => this.contact = data,
+      error => console.error(error),
+      () => this.loaded = true
+    );
   }
 
 }
