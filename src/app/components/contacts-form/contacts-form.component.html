@@ -9,23 +9,62 @@
 >
   <div class="field">
     <label for="name">First name</label>
-    <input type="text" id="firstName" name="firstName" required minlength="2" maxlength="30" [(ngModel)]="model.firstName" #firstName="ngModel">
-    <p [hidden]="firstName.valid || firstName.pristine" class="error">Error in firstName</p>
+    <input type="text" id="firstName" name="firstName" aria-describedby="firstName-validation-messages" required minlength="2" maxlength="15" [ngModel]="model.firstName" #firstNameRef="ngModel">
+    <div id="firstName-validation-messages">
+      <ul *ngIf="firstNameRef.errors && (firstNameRef.dirty || firstNameRef.touched)" class="error">
+        <li *ngIf="!firstNameRef.errors.required">
+          First name is required
+        </li>
+        <li *ngIf="!firstNameRef.errors.minlength">
+          First name must be, at least, 2 characters long
+        </li>
+        <li *ngIf="!firstNameRef.errors.maxlength">
+          First name must be, at most, 15 characters long
+        </li>
+      </ul>
+    </div>
   </div>
 
   <div class="field">
     <label for="surname">Surname</label>
-    <input type="text" id="surname" name="surname" required [(ngModel)]="model.surname">
+    <input type="text" id="surname" name="surname" aria-describedby="surname-validation-messages" required minlength="2" maxlength="15" [ngModel]="model.surname" #surnameRef="ngModel">
+    <div id="surname-validation-messages">
+      <ul *ngIf="surnameRef.errors && (surnameRef.dirty || surnameRef.touched)" class="error">
+        <li *ngIf="!surnameRef.errors.required">
+          Surname is required
+        </li>
+        <li *ngIf="!surnameRef.errors.minlength">
+          Surname must be, at least, 2 characters long
+        </li>
+        <li *ngIf="!surnameRef.errors.maxlength">
+          Surname must be, at most, 15 characters long
+        </li>
+      </ul>
+    </div>
   </div>
 
   <div class="field">
     <label for="email">Email</label>
-    <input type="email" id="email" name="email" required [(ngModel)]="model.email">
+    <input type="email" id="email" name="email" aria-describedby="email-validation-messages" required email [ngModel]="model.email" #emailRef="ngModel">
+    <div id="surname-validation-messages">
+      <ul *ngIf="emailRef.errors && (emailRef.dirty || emailRef.touched)" class="error">
+        <li *ngIf="emailRef.errors.email">
+          Email must be a valid emails address
+        </li>
+      </ul>
+    </div>
   </div>
 
   <div class="field">
     <label for="groupId">Group ID</label>
-    <input type="number" id="groupId" name="groupId" required [(ngModel)]="model.groupId">
+    <input type="number" id="groupId" name="groupId" aria-describedby="groupId-validation-messages" required [ngModel]="model.groupId" #groupIdRef="ngModel">
+    <div id="groupId-validation-messages">
+      <ul *ngIf="groupIdRef.errors && (groupIdRef.dirty || groupIdRef.touched)" class="error">
+        <li *ngIf="!groupIdRef.errors.required">
+          Group ID is required
+        </li>
+      </ul>
+    </div>
   </div>
 
   <button type="submit" class="button button-success">Submit</button>
