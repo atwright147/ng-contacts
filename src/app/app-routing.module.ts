@@ -12,6 +12,10 @@ const routes: Routes = [
     component: ContactsListComponent,
   },
   {
+    path: 'contact/:contactId/edit',
+    component: ContactsFormComponent,
+  },
+  {
     path: 'contact/create/template',
     component: ContactsFormComponent,
   },
