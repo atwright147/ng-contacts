@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { ContactService } from '../../services/contact.service';
+import { FormGroup } from '@angular/forms';
 
 interface ContactFormModel {
   id?: number;
   firstName: string;
   surname: string;
   email: string;
-  groupId?: string;
+  groupId?: number;
 }
 
 @Component({
@@ -16,17 +18,29 @@ interface ContactFormModel {
   styleUrls: ['./contacts-form.component.scss']
 })
 export class ContactsFormComponent implements OnInit {
+  private sub: any;
   response: any;
+  contactForm: FormGroup;
+  contactId: number;
   model;
 
-  constructor(private Contact: ContactService) {}
+  constructor(
+    private Contact: ContactService,
+    private route: ActivatedRoute,
+  ) {}
 
   ngOnInit() {
-    this.Contact.getContactById(1).subscribe(data => {
-      // FROM: https://medium.com/@samichkhachkhi/setvalue-vs-patchvalue-angular-a64a55e912b8
-      // this.contactForm.patchValue(data);  // when you want to load a partial payload
-      this.model = data;  // when you can guarantee a full payload
+    this.sub = this.route.params.subscribe(params => {
+      this.contactId = params.contactId;
     });
+
+    if (this.contactId) {
+      this.Contact.getContactById(1).subscribe(data => {
+        // FROM: https://medium.com/@samichkhachkhi/setvalue-vs-patchvalue-angular-a64a55e912b8
+        this.contactForm.patchValue(data);  // when you want to load a partial payload
+        // this.model = data;  // when you can guarantee a full payload
+      });
+    }
   }
 
   onSubmit() {
