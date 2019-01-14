@@ -22,7 +22,13 @@ export class ContactsFormComponent implements OnInit, OnDestroy {
   response: any;
   contactForm: FormGroup;
   contactId: number;
-  model;
+  model: ContactFormModel = {
+    id: null,
+    firstName: '',
+    surname: '',
+    email: '',
+    groupId: null,
+  };
 
   constructor(
     private Contact: ContactService,
