@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { ContactService } from '../../services/contact.service';
@@ -17,7 +17,7 @@ interface ContactFormModel {
   templateUrl: './contacts-form.component.html',
   styleUrls: ['./contacts-form.component.scss']
 })
-export class ContactsFormComponent implements OnInit {
+export class ContactsFormComponent implements OnInit, OnDestroy {
   private sub: any;
   response: any;
   contactForm: FormGroup;
@@ -46,5 +46,9 @@ export class ContactsFormComponent implements OnInit {
   onSubmit() {
     console.info('Sending: ', this.model);
     this.Contact.send(this.model).subscribe(console.info);
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 }
