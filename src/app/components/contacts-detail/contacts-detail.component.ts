@@ -12,7 +12,7 @@ export class ContactsDetailComponent implements OnInit {
   contact: any;
   contactId: number;
   sub: any;
-  loaded: boolean = false;
+  loaded = false;
 
   constructor(
     private Contact: ContactService,
