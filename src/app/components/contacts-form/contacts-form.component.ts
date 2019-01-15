@@ -4,13 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ContactService } from '../../services/contact.service';
 import { FormGroup } from '@angular/forms';
 
-interface ContactFormModel {
-  id?: number;
-  firstName: string;
-  surname: string;
-  email: string;
-  groupId?: number;
-}
+import { ContactFormModel } from '../../interfaces/contact-form-model.interface';
 
 @Component({
   selector: 'app-contacts-form',
@@ -42,7 +36,7 @@ export class ContactsFormComponent implements OnInit, OnDestroy {
     });
 
     if (this.contactId) {
-      this.Contact.getContactById(1).subscribe(data => {
+      this.Contact.getContactById(1).subscribe((data: ContactFormModel) => {
         // FROM: https://medium.com/@samichkhachkhi/setvalue-vs-patchvalue-angular-a64a55e912b8
         // this.contactForm.patchValue(data);  // when you want to load a partial payload
         this.model = data;  // when you can guarantee a full payload

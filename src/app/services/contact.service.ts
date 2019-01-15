@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { ContactFormModel } from '../interfaces/contact-form-model.interface';
+import { Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,8 +16,8 @@ export class ContactService {
     return this.http.get<Array<any>>(`${this.base_url}/contacts`);
   }
 
-  getContactById(contactId: number) {
-    return this.http.get<Array<any>>(`${this.base_url}/contacts/${contactId}`);
+  getContactById(contactId: number): Observable<ContactFormModel> {
+    return this.http.get<ContactFormModel>(`${this.base_url}/contacts/${contactId}`);
   }
 
   send(model: any) {
