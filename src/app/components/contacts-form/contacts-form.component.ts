@@ -36,7 +36,7 @@ export class ContactsFormComponent implements OnInit, OnDestroy {
     });
 
     if (this.contactId) {
-      this.Contact.getContactById(1).subscribe((data: ContactFormModel) => {
+      this.Contact.getContactById(this.contactId).subscribe((data: ContactFormModel) => {
         // FROM: https://medium.com/@samichkhachkhi/setvalue-vs-patchvalue-angular-a64a55e912b8
         // this.contactForm.patchValue(data);  // when you want to load a partial payload
         this.model = data;  // when you can guarantee a full payload
