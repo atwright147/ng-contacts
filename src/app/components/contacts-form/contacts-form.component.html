@@ -9,7 +9,7 @@
 >
   <div class="field">
     <label for="name">First name</label>
-    <input type="text" id="firstName" name="firstName" aria-describedby="firstName-validation-messages" required minlength="2" maxlength="15" [ngModel]="model.firstName" #firstNameRef="ngModel">
+    <input type="text" id="firstName" name="firstName" aria-describedby="firstName-validation-messages" required minlength="2" maxlength="15" [(ngModel)]="model.firstName" #firstNameRef="ngModel">
     <div id="firstName-validation-messages">
       <ul *ngIf="firstNameRef.errors && (firstNameRef.dirty || firstNameRef.touched)" class="error">
         <li *ngIf="!firstNameRef.errors.required">
@@ -27,7 +27,7 @@
 
   <div class="field">
     <label for="surname">Surname</label>
-    <input type="text" id="surname" name="surname" aria-describedby="surname-validation-messages" required minlength="2" maxlength="15" [ngModel]="model.surname" #surnameRef="ngModel">
+    <input type="text" id="surname" name="surname" aria-describedby="surname-validation-messages" required minlength="2" maxlength="15" [(ngModel)]="model.surname" #surnameRef="ngModel">
     <div id="surname-validation-messages">
       <ul *ngIf="surnameRef.errors && (surnameRef.dirty || surnameRef.touched)" class="error">
         <li *ngIf="!surnameRef.errors.required">
@@ -45,7 +45,7 @@
 
   <div class="field">
     <label for="email">Email</label>
-    <input type="email" id="email" name="email" aria-describedby="email-validation-messages" required email [ngModel]="model.email" #emailRef="ngModel">
+    <input type="email" id="email" name="email" aria-describedby="email-validation-messages" required email [(ngModel)]="model.email" #emailRef="ngModel">
     <div id="surname-validation-messages">
       <ul *ngIf="emailRef.errors && (emailRef.dirty || emailRef.touched)" class="error">
         <li *ngIf="emailRef.errors.email">
@@ -57,7 +57,7 @@
 
   <div class="field">
     <label for="groupId">Group ID</label>
-    <input type="number" id="groupId" name="groupId" aria-describedby="groupId-validation-messages" required [ngModel]="model.groupId" #groupIdRef="ngModel">
+    <input type="number" id="groupId" name="groupId" aria-describedby="groupId-validation-messages" required [(ngModel)]="model.groupId" #groupIdRef="ngModel">
     <div id="groupId-validation-messages">
       <ul *ngIf="groupIdRef.errors && (groupIdRef.dirty || groupIdRef.touched)" class="error">
         <li *ngIf="!groupIdRef.errors.required">
