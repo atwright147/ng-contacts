@@ -18,7 +18,8 @@ interface ContactFormModel {
   styleUrls: ['./contacts-form.component.scss']
 })
 export class ContactsFormComponent implements OnInit, OnDestroy {
-  private sub: any;
+  private routeParamsSub: any;
+  private contactSendSub: any;
   response: any;
   contactForm: FormGroup;
   contactId: number;
@@ -36,7 +37,7 @@ export class ContactsFormComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
+    this.routeParamsSub = this.route.params.subscribe(params => {
       this.contactId = params.contactId;
     });
 
@@ -55,6 +56,7 @@ export class ContactsFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    this.routeParamsSub.unsubscribe();
+    this.contactSendSub.unsubscribe();
   }
 }
