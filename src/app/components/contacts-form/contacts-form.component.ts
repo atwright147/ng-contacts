@@ -51,8 +51,8 @@ export class ContactsFormComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    console.info('Sending: ', this.model);
-    this.Contact.send(this.model).subscribe(console.info);
+    console.info('Sending: ', this.model);  // tslint:disable-line no-console
+    this.contactSendSub = this.Contact.send(this.model).subscribe(console.info);  // tslint:disable-line no-console
   }
 
   ngOnDestroy() {
