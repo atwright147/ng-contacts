@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
 import { ContactService } from '../../services/contact.service';
@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './contacts-form-reactive.component.html',
   styleUrls: ['./contacts-form-reactive.component.scss']
 })
-export class ContactsFormReactiveComponent implements OnInit {
+export class ContactsFormReactiveComponent implements OnInit, OnDestroy {
   private routeParamsSub: any;
   // https://youtu.be/VLYc3ACWL-E
   contactForm: FormGroup;
