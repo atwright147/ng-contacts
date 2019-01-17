@@ -13,7 +13,6 @@ import { ContactFormModel } from '../../interfaces/contact-form-model.interface'
 })
 export class ContactsFormComponent implements OnInit, OnDestroy {
   private routeParamsSub: any;
-  private contactSendSub: any;
   response: any;
   contactForm: FormGroup;
   contactId: number;
