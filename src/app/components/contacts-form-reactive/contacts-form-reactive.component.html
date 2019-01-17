@@ -9,25 +9,71 @@
 >
   <div class="field">
     <label for="name">First name</label>
-    <input type="text" id="firstName" name="firstName" formControlName="firstName">
+    <input type="text" id="firstName" name="firstName" formControlName="firstName" aria-describedby="firstName-validation-messages" [attr.aria-invalid]="contactForm?.controls.firstName?.invalid" aria-required="true">
+    <div id="firstName-validation-messages">
+      <ul *ngIf="contactForm?.controls.firstName?.errors && (contactForm?.controls.firstName?.dirty || contactForm?.controls.firstName?.touched)" class="error">
+        <li *ngIf="contactForm?.controls.firstName?.errors?.required">
+          First name is required
+        </li>
+        <li *ngIf="contactForm?.controls.firstName?.errors?.minlength">
+          First name must be, at least, 2 characters long
+        </li>
+        <li *ngIf="contactForm?.controls.firstName?.errors?.maxlength">
+          First name must be, at most, 15 characters long
+        </li>
+      </ul>
+    </div>
   </div>
 
   <div class="field">
     <label for="surname">Surname</label>
     <input type="text" id="surname" name="surname" formControlName="surname">
+    <div id="surname-validation-messages">
+      <ul *ngIf="contactForm?.controls.surname?.errors && (contactForm?.controls.surname?.dirty || contactForm?.controls.surname?.touched)" class="error">
+        <li *ngIf="contactForm?.controls.surname?.errors?.required">
+          Surname is required
+        </li>
+        <li *ngIf="contactForm?.controls.surname?.errors?.minlength">
+          Surname must be, at least, 2 characters long
+        </li>
+        <li *ngIf="contactForm?.controls.surname?.errors?.maxlength">
+          Surname must be, at most, 15 characters long
+        </li>
+      </ul>
+    </div>
   </div>
 
   <div class="field">
     <label for="email">Email</label>
     <input type="email" id="email" name="email" formControlName="email">
+    <div id="email-validation-messages">
+      <ul *ngIf="contactForm?.controls.email?.errors && (contactForm?.controls.email?.dirty || contactForm?.controls.email?.touched)" class="error">
+        <li *ngIf="contactForm?.controls.email?.errors?.required">
+          Email is required
+        </li>
+        <li *ngIf="contactForm?.controls.email?.errors.email">
+          Email must be a valid emails address
+        </li>
+      </ul>
+    </div>
   </div>
 
   <div class="field">
     <label for="groupId">Group ID</label>
     <input type="number" id="groupId" name="groupId" formControlName="groupId">
+    <div id="groupId-validation-messages">
+      <ul *ngIf="contactForm?.controls.groupId?.errors && (contactForm?.controls.groupId?.dirty || contactForm?.controls.groupId?.touched)" class="error">
+        <li *ngIf="contactForm?.controls.groupId?.errors?.required">
+          Group ID is required
+        </li>
+        <li *ngIf="contactForm?.controls.groupId?.errors.min">
+          Group ID must be number greater than 0
+        </li>
+      </ul>
+    </div>
   </div>
 
-  <button type="submit" class="button button-success">Submit</button>
+  <button [disabled]="contactForm?.invalid" type="submit" class="button button-success">Submit</button>
 
 </form>
 

@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { ContactService } from '../../services/contact.service';
 import { ActivatedRoute } from '@angular/router';
@@ -26,10 +26,24 @@ export class ContactsFormReactiveComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.contactForm = new FormGroup({
       id: new FormControl(),
-      firstName: new FormControl(),
-      surname: new FormControl(),
-      email: new FormControl(),
-      groupId: new FormControl(),
+      firstName: new FormControl('', [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(15),
+      ]),
+      surname: new FormControl('', [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(15),
+      ]),
+      email: new FormControl('', [
+        Validators.required,
+        Validators.email,
+      ]),
+      groupId: new FormControl('', [
+        Validators.required,
+        Validators.min(1),
+      ]),
     });
 
     this.routeParamsSub = this.route.params.subscribe(params => {
