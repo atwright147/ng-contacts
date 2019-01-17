@@ -9,5 +9,6 @@
     <li><b>Group ID:</b> {{ contact.groupId }}</li>
   </ul>
 
-  <a [routerLink]="['/contact', contact.id, 'edit']">Edit</a>
+  <a [routerLink]="['/contact', contact.id, 'edit', 'template']">Edit template</a><br />
+  <a [routerLink]="['/contact', contact.id, 'edit', 'reactive']">Edit reactive</a>
 </ng-container>
