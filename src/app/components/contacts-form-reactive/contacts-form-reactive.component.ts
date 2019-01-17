@@ -44,7 +44,7 @@ export class ContactsFormReactiveComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    this.Contact.send(this.contactForm.value).subscribe(console.info);
+    this.Contact.send(this.contactForm.value).subscribe(console.info);  // tslint:disable-line no-console
   }
 
   ngOnDestroy() {
