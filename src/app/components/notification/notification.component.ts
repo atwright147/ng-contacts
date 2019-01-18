@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
+import { Notification, NotificationType } from '../../interfaces/notification.interface';
 import { NotificationService } from '../../services/notification.service';
 
 @Component({
@@ -7,26 +8,46 @@ import { NotificationService } from '../../services/notification.service';
   templateUrl: './notification.component.html',
   styleUrls: ['./notification.component.scss']
 })
-export class NotificationComponent {
+export class NotificationComponent implements OnInit {
+  notifications: Notification[] = [];
+
   constructor(private notificationService: NotificationService) {}
 
-  success(message: string) {
-    this.notificationService.success(message);
+  ngOnInit() {
+    this.notificationService.getNotification().subscribe((notification: Notification) => {
+      if (!notification) {
+        // clear alerts when an empty alert is received
+        this.notifications = [];
+        return;
+      }
+
+      // add alert to array
+      this.notifications.push(notification);
+    });
   }
 
-  error(message: string) {
-    this.notificationService.error(message);
+  removeAlert(notification: Notification) {
+    this.notifications = this.notifications.filter(x => x !== notification);
   }
 
-  info(message: string) {
-    this.notificationService.info(message);
-  }
+  cssClass(notification: Notification) {
+    if (!notification) {
+      return;
+    }
 
-  warn(message: string) {
-    this.notificationService.warn(message);
-  }
+    // return css class based on alert type
+    switch (notification.type) {
+      case NotificationType.Success:
+        return 'alert alert-success';
 
-  clear() {
-    this.notificationService.clear();
+      case NotificationType.Error:
+        return 'alert alert-danger';
+
+      case NotificationType.Warning:
+        return 'alert alert-warning';
+
+      case NotificationType.Info:
+        return 'alert alert-info';
+    }
   }
 }

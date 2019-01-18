@@ -23,7 +23,7 @@ export class NotificationService {
     });
   }
 
-  getAlert(): Observable<any> {
+  getNotification(): Observable<any> {
     return this.subject.asObservable();
   }
 

@@ -1,3 +1,4 @@
-<p>
-  notification works!
-</p>
+<div *ngFor="let notification of notifications" class="{{ cssClass(notification) }}">
+    {{ notification.message }}
+    <a class="close" (click)="removeNotification(notification)">&times;</a>
+</div>

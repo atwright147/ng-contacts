@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { ContactFormModel } from '../interfaces/contact-form-model.interface';
+import { NotificationService } from './notification.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,10 @@ import { ContactFormModel } from '../interfaces/contact-form-model.interface';
 export class ContactService {
   base_url = 'http://localhost:8882';
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private notificationService: NotificationService,
+  ) {}
 
   getContactsList() {
     return this.http.get<Array<any>>(`${this.base_url}/contacts`);
@@ -21,6 +25,7 @@ export class ContactService {
   }
 
   send(model: any) {
+    this.notificationService.info('Contact saved', true);
     return this.http.post(`${this.base_url}/contacts/`, model);
   }
 }
