@@ -26,7 +26,7 @@ export class NotificationComponent implements OnInit {
     });
   }
 
-  removeAlert(notification: Notification) {
+  removeNotification(notification: Notification) {
     this.notifications = this.notifications.filter(x => x !== notification);
   }
 
