@@ -9,6 +9,7 @@ import { ContactsListComponent } from './components/contacts-list/contacts-list.
 import { ContactsDetailComponent } from './components/contacts-detail/contacts-detail.component';
 import { ContactsFormComponent } from './components/contacts-form/contacts-form.component';
 import { ContactsFormReactiveComponent } from './components/contacts-form-reactive/contacts-form-reactive.component';
+import { NotificationComponent } from './components/notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ContactsFormReactiveComponent } from './components/contacts-form-reacti
     ContactsDetailComponent,
     ContactsFormComponent,
     ContactsFormReactiveComponent,
+    NotificationComponent,
   ],
   imports: [
     BrowserModule,
