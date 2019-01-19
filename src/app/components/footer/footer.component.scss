@@ -1,8 +1,10 @@
+@import '../../../colours.scss';
+
 footer {
-  background-color: grey;
+  background-color: $grey;
 
   padding: 1rem;
 
-  color: white;
+  color: black;
   font-size: 1.6rem;
 }
