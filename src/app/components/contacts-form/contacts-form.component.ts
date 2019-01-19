@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { FormGroup } from '@angular/forms';
 
 import { ContactService } from '../../services/contact.service';
-import { FormGroup } from '@angular/forms';
+import { NotificationService } from '../../services/notification.service';
 
 import { ContactFormModel } from '../../interfaces/contact-form-model.interface';
 
@@ -26,6 +27,7 @@ export class ContactsFormComponent implements OnInit, OnDestroy {
 
   constructor(
     private Contact: ContactService,
+    private notification: NotificationService,
     private route: ActivatedRoute,
   ) {}
 
@@ -44,8 +46,12 @@ export class ContactsFormComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    console.info('Sending: ', this.model);  // tslint:disable-line no-console
-    this.Contact.send(this.model).subscribe(console.info);  // tslint:disable-line no-console
+    this.Contact.send(this.model).subscribe(
+      console.info,  // tslint:disable-line no-console
+      () => this.notification.error('Contact failed to save'),
+      () => this.notification.info('Contact saved successfully'),
+
+    );
   }
 
   ngOnDestroy() {

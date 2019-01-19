@@ -25,7 +25,6 @@ export class ContactService {
   }
 
   send(model: any) {
-    this.notificationService.info('Contact saved', true);
     return this.http.post(`${this.base_url}/contacts/`, model);
   }
 }
