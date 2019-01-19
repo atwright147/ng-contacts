@@ -10,6 +10,8 @@ import { ContactsDetailComponent } from './components/contacts-detail/contacts-d
 import { ContactsFormComponent } from './components/contacts-form/contacts-form.component';
 import { ContactsFormReactiveComponent } from './components/contacts-form-reactive/contacts-form-reactive.component';
 import { NotificationComponent } from './components/notification/notification.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { NotificationComponent } from './components/notification/notification.co
     ContactsFormComponent,
     ContactsFormReactiveComponent,
     NotificationComponent,
+    HeaderComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
