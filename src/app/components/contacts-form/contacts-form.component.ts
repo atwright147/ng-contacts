@@ -49,7 +49,7 @@ export class ContactsFormComponent implements OnInit, OnDestroy {
     this.Contact.send(this.model).subscribe(
       console.info,  // tslint:disable-line no-console
       () => this.notification.error('Contact failed to save'),
-      () => this.notification.info('Contact saved successfully'),
+      () => this.notification.success('Contact saved successfully'),
 
     );
   }

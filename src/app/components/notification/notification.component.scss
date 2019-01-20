@@ -1,10 +1,29 @@
+@import '../../../colours.scss';
+
 button.close {
   border: 0;
-
   background-color: transparent;
-
   cursor: pointer;
+  color: white;
 
   width: auto;
   height: auto;
+  float: right;
+  margin-top: -.4rem;
+}
+
+.info,
+.success,
+.warn,
+.error {
+  color: white;
+  font-size: 1.6rem;
+  padding: 1rem 0;
+}
+
+.info {
+  background-color: $info;
+}
+.success {
+  background-color: $success;
 }
