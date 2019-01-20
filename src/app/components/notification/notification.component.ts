@@ -41,10 +41,10 @@ export class NotificationComponent implements OnInit {
         return 'success';
 
       case NotificationType.Error:
-        return 'danger';
+        return 'error';
 
       case NotificationType.Warning:
-        return 'warning';
+        return 'warn';
 
       case NotificationType.Info:
         return 'info';
