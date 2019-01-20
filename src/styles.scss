@@ -15,7 +15,7 @@ body {
 main {
   font-size: 1.6rem;
 
-  padding: 1rem 0;
+  padding-bottom: 2rem;
 }
 
 input {
@@ -71,6 +71,8 @@ h6 {
 
 .page-heading {
   padding: 2rem 0;
+  margin-bottom: 2rem;
+
   border-bottom: .1rem solid $grey;
 }
 
