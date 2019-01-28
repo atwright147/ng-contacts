@@ -5,6 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { httpInterceptorProviders } from './http-interceptors';
+
 import { ContactsListComponent } from './components/contacts-list/contacts-list.component';
 import { ContactsDetailComponent } from './components/contacts-detail/contacts-detail.component';
 import { ContactsFormComponent } from './components/contacts-form/contacts-form.component';
@@ -31,7 +33,9 @@ import { FooterComponent } from './components/footer/footer.component';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    httpInterceptorProviders
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
