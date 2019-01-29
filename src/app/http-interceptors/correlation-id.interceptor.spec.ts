@@ -1,7 +1,5 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CorrelationIdInterceptor } from './correlation-id.interceptor';
-import { httpInterceptorProviders } from './index';
 import { AppComponent } from '../app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from '../app-routing.module';
@@ -15,17 +13,19 @@ import { NotificationComponent } from '../components/notification/notification.c
 import { HeaderComponent } from '../components/header/header.component';
 import { FooterComponent } from '../components/footer/footer.component';
 
-fdescribe('CorrelationIdInterceptor', () => {
+import { CorrelationIdInterceptor } from './correlation-id.interceptor';
+
+describe('CorrelationIdInterceptor', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
         ContactsListComponent,
-        ContactsDetailComponent,
         ContactsFormComponent,
         ContactsFormReactiveComponent,
-        NotificationComponent,
+        ContactsDetailComponent,
         HeaderComponent,
+        NotificationComponent,
         FooterComponent,
       ],
       imports: [
@@ -36,7 +36,7 @@ fdescribe('CorrelationIdInterceptor', () => {
         ReactiveFormsModule,
       ],
       providers: [
-        httpInterceptorProviders.forRoot([]),
+        CorrelationIdInterceptor,
       ],
     });
   });
