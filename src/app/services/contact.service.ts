@@ -16,15 +16,15 @@ export class ContactService {
     private notificationService: NotificationService,
   ) {}
 
-  getContactsList() {
-    return this.http.get<Array<any>>(`${this.base_url}/contacts`);
+  getContactsList(): Observable<ContactFormModel[]> {
+    return this.http.get<ContactFormModel[]>(`${this.base_url}/contacts`);
   }
 
   getContactById(contactId: number): Observable<ContactFormModel> {
     return this.http.get<ContactFormModel>(`${this.base_url}/contacts/${contactId}`);
   }
 
-  send(model: any) {
+  send(model: ContactFormModel) {
     return this.http.post(`${this.base_url}/contacts/`, model);
   }
 }
