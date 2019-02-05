@@ -19,8 +19,8 @@ describe('ContactService', () => {
     expect(contactService).toBeTruthy();
   });
 
-  it('should be created', () => {
-    mockHttp.get.and.returnValue(of([{ firstName: 'Testr', surname: 'User' }]));
+  it('should fetch contacts via htto client GET', () => {
+    mockHttp.get.and.returnValue([{ firstName: 'Test', surname: 'User' }]);
     expect(contactService.getContactsList()).toEqual([{ firstName: 'Test', surname: 'User' }]);
   });
 });
