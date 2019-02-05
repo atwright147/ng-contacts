@@ -4,7 +4,7 @@ import { ContactFormModel } from '../interfaces/contact-form-model.interface';
 import { NotificationService } from './notification.service';
 import { ContactService } from './contact.service';
 
-describe('ContactService', () => {
+fdescribe('ContactService', () => {
   let contactService: ContactService;
   let mockNotificationService;
   let mockHttp;
@@ -19,8 +19,17 @@ describe('ContactService', () => {
     expect(contactService).toBeTruthy();
   });
 
-  it('should fetch contacts via htto client GET', () => {
-    mockHttp.get.and.returnValue([{ firstName: 'Test', surname: 'User' }]);
-    expect(contactService.getContactsList()).toEqual([{ firstName: 'Test', surname: 'User' }]);
+  describe('#getContactsList', () => {
+    it('should fetch contacts via HttpClient GET', () => {
+      mockHttp.get.and.returnValue([{ firstName: 'Test', surname: 'User', email: 'test@example.com' }]);
+      expect(contactService.getContactsList()).toEqual([{ firstName: 'Test', surname: 'User', email: 'test@example.com' }]);
+    });
+  });
+
+  describe('#getContactById', () => {
+    it('should accept an ID and fetch contacts via HttpClient GET', () => {
+      mockHttp.get.and.returnValue([{ firstName: 'Test', surname: 'User', email: 'test@example.com' }]);
+      expect(contactService.getContactsList()).toEqual([{ firstName: 'Test', surname: 'User', email: 'test@example.com' }]);
+    });
   });
 });
