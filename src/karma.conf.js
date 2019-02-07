@@ -26,12 +26,19 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['ChromeHeadless'],
-    flags: [
-      '--disable-web-security',
-      '--disable-gpu',
-      '--no-sandbox'
-    ],
+    browsers: ['ChromeForDebugging'],
+    customLaunchers: {
+      ChromeForDebugging: {
+        base: 'ChromeHeadless',
+        flags: [
+          '--remote-debugging-port=9222',
+          '--disable-web-security',
+          '--disable-gpu',
+          '--no-sandbox'
+        ],
+        debug: true
+      }
+    },
     singleRun: false
   });
 };
