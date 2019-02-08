@@ -2,15 +2,15 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "ng_test",
+      "label": "ng test debug",
       "type": "shell",
-      "command": "ng test",
+      "command": "npx ng test --browsers=ChromeForDebugging",
       "problemMatcher": [
         "$tsc"
       ]
     },
     {
-      "identifier": "ng serve",
+      "label": "ng serve",
       "type": "npm",
       "script": "start",
       "group": {
