@@ -4,7 +4,7 @@ import { ContactFormModel } from '../interfaces/contact-form-model.interface';
 import { NotificationService } from './notification.service';
 import { ContactService } from './contact.service';
 
-fdescribe('ContactService', () => {
+describe('ContactService', () => {
   let contactService: ContactService;
   let mockNotificationService;
   let mockHttp;
@@ -21,15 +21,19 @@ fdescribe('ContactService', () => {
 
   describe('#getContactsList', () => {
     it('should fetch contacts via HttpClient GET', () => {
-      mockHttp.get.and.returnValue([{ firstName: 'Test', surname: 'User', email: 'test@example.com' }]);
-      expect(contactService.getContactsList()).toEqual([{ firstName: 'Test', surname: 'User', email: 'test@example.com' }]);
+      const payload = of([{ firstName: 'Test', surname: 'User', email: 'test@example.com' }]);
+
+      mockHttp.get.and.returnValue(payload);
+      expect(contactService.getContactsList()).toEqual(payload);
     });
   });
 
   describe('#getContactById', () => {
     it('should accept an ID and fetch contacts via HttpClient GET', () => {
-      mockHttp.get.and.returnValue([{ firstName: 'Test', surname: 'User', email: 'test@example.com' }]);
-      expect(contactService.getContactsList()).toEqual([{ firstName: 'Test', surname: 'User', email: 'test@example.com' }]);
+      const payload = of([{ firstName: 'Test', surname: 'User', email: 'test@example.com' }]);
+
+      mockHttp.get.and.returnValue(payload);
+      expect(contactService.getContactsList()).toEqual(payload);
     });
   });
 });
