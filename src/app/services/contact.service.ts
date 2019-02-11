@@ -25,6 +25,6 @@ export class ContactService {
   }
 
   send(model: ContactFormModel) {
-    return this.http.post(`${this.base_url}/contacts/`, model);
+    return this.http.post(`${this.base_url}/contacts`, model);
   }
 }

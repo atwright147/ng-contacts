@@ -1,10 +1,11 @@
 import { Observable, of } from 'rxjs';
+import { asyncScheduler } from 'rxjs';
 
 import { ContactFormModel } from '../interfaces/contact-form-model.interface';
 import { NotificationService } from './notification.service';
 import { ContactService } from './contact.service';
 
-describe('ContactService', () => {
+fdescribe('ContactService', () => {
   let contactService: ContactService;
   let mockNotificationService;
   let mockHttp;
@@ -20,20 +21,56 @@ describe('ContactService', () => {
   });
 
   describe('#getContactsList', () => {
-    it('should fetch contacts via HttpClient GET', () => {
-      const payload = of([{ firstName: 'Test', surname: 'User', email: 'test@example.com' }]);
+    it('should perform GET with correct args', () => {
+      mockHttp.get.and.returnValue();
+      contactService.getContactsList();
 
-      mockHttp.get.and.returnValue(payload);
-      expect(contactService.getContactsList()).toEqual(payload);
+      expect(mockHttp.get.calls.mostRecent().args).toEqual(['http://localhost:8882/contacts']);
+    });
+
+    it('should fetch contacts via HttpClient GET', () => {
+      const payload$ = of([{ firstName: 'Test', surname: 'User', email: 'test@example.com' }], asyncScheduler);
+
+      mockHttp.get.and.returnValue(payload$);
+      expect(contactService.getContactsList()).toEqual(payload$);
     });
   });
 
   describe('#getContactById', () => {
-    it('should accept an ID and fetch contacts via HttpClient GET', () => {
-      const payload = of([{ firstName: 'Test', surname: 'User', email: 'test@example.com' }]);
+    it('should perform GET with correct args', () => {
+      mockHttp.get.and.returnValue();
+      contactService.getContactById(1);
 
-      mockHttp.get.and.returnValue(payload);
-      expect(contactService.getContactsList()).toEqual(payload);
+      expect(mockHttp.get.calls.mostRecent().args).toEqual(['http://localhost:8882/contacts/1']);
+    });
+
+    it('should accept an ID and fetch contacts via HttpClient GET', () => {
+      const payload$ = of({ firstName: 'Test', surname: 'User', email: 'test@example.com' }, asyncScheduler);
+
+      mockHttp.get.and.returnValue(payload$);
+      expect(contactService.getContactById(1)).toEqual(payload$);
+    });
+  });
+
+  describe('#send', () => {
+    let payload;
+
+    beforeEach(() => {
+      payload = { firstName: 'Test', surname: 'User', email: 'test@example.com' };
+    });
+
+    it('should perform POST with correct args', () => {
+      mockHttp.post.and.returnValue();
+      contactService.send(payload);
+
+      expect(mockHttp.post.calls.mostRecent().args).toEqual(['http://localhost:8882/contacts', payload]);
+    });
+
+    it('should accept an ID and fetch contacts via HttpClient GET', () => {
+      const payload$ = of({ firstName: 'Test', surname: 'User', email: 'test@example.com' }, asyncScheduler);
+
+      mockHttp.post.and.returnValue(payload$);
+      expect(contactService.send(payload)).toEqual(payload$);
     });
   });
 });
