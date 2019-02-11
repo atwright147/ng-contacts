@@ -6,7 +6,7 @@ import { ContactsDetailComponent } from './components/contacts-detail/contacts-d
 import { ContactsFormComponent } from './components/contacts-form/contacts-form.component';
 import { ContactsFormReactiveComponent } from './components/contacts-form-reactive/contacts-form-reactive.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: '',
     component: ContactsListComponent,
