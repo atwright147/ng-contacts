@@ -1,8 +1,6 @@
-import { Observable, of } from 'rxjs';
+import { of } from 'rxjs';
 import { asyncScheduler } from 'rxjs';
 
-import { ContactFormModel } from '../interfaces/contact-form-model.interface';
-import { NotificationService } from './notification.service';
 import { ContactService } from './contact.service';
 
 describe('ContactService', () => {
