@@ -5,7 +5,7 @@ import { ContactFormModel } from '../interfaces/contact-form-model.interface';
 import { NotificationService } from './notification.service';
 import { ContactService } from './contact.service';
 
-fdescribe('ContactService', () => {
+describe('ContactService', () => {
   let contactService: ContactService;
   let mockNotificationService;
   let mockHttp;
