@@ -1,25 +1,36 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NgModule } from '@angular/core';
+import { Shallow } from 'shallow-render';
 
 import { ContactsListComponent } from './contacts-list.component';
 
-describe('ContactsListComponent', () => {
-  let component: ContactsListComponent;
-  let fixture: ComponentFixture<ContactsListComponent>;
+@NgModule({
+  declarations: [
+    ContactsListComponent,
+  ]
+})
+class TestModule {}
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ContactsListComponent ]
-    })
-    .compileComponents();
-  }));
+describe('ContactsListComponent', () => {
+  let shallow: Shallow<ContactsListComponent>;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ContactsListComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    shallow = new Shallow(ContactsListComponent, TestModule);
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should render a table with correct head section', async () => {
+    const { find } = await shallow.render('<app-contacts-list [contacts]="contacts"></app-contacts-list>');
+    const columns = find('table').nativeElement.querySelectorAll('thead th');
+
+    expect(columns.length).toEqual(4);
+  });
+
+  it('should render a table with correct body', async () => {
+    const contacts = [
+      { id: 2, firstName: 'Jimmy', surname: 'Tester', email: 'Jimmy.Tester@example.com', groupId: 3 }
+    ];
+    const { find } = await shallow.render('<app-contacts-list [contacts]="contacts"></app-contacts-list>');
+    const columns = find('table').nativeElement.querySelectorAll('tbody td');
+
+    expect(columns.length).toEqual(4);
   });
 });
