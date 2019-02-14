@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { httpInterceptorProviders } from './http-interceptors';
 
 import { ContactsListComponent } from './components/contacts-list/contacts-list.component';
+import { ContactsListContainerComponent } from './components/contacts-list-container/contacts-list-container.component';
 import { ContactsDetailComponent } from './components/contacts-detail/contacts-detail.component';
 import { ContactsFormComponent } from './components/contacts-form/contacts-form.component';
 import { ContactsFormReactiveComponent } from './components/contacts-form-reactive/contacts-form-reactive.component';
@@ -19,6 +20,7 @@ import { FooterComponent } from './components/footer/footer.component';
   declarations: [
     AppComponent,
     ContactsListComponent,
+    ContactsListContainerComponent,
     ContactsDetailComponent,
     ContactsFormComponent,
     ContactsFormReactiveComponent,

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ContactsListComponent } from './components/contacts-list/contacts-list.component';
+import { ContactsListContainerComponent } from './components/contacts-list-container/contacts-list-container.component';
 import { ContactsDetailComponent } from './components/contacts-detail/contacts-detail.component';
 import { ContactsFormComponent } from './components/contacts-form/contacts-form.component';
 import { ContactsFormReactiveComponent } from './components/contacts-form-reactive/contacts-form-reactive.component';
@@ -9,7 +9,7 @@ import { ContactsFormReactiveComponent } from './components/contacts-form-reacti
 const routes: Routes = [
   {
     path: '',
-    component: ContactsListComponent,
+    component: ContactsListContainerComponent,
   },
   {
     path: 'contact/:contactId/edit/template',
