@@ -15,9 +15,7 @@ class DummyComponent {}
     ContactsListComponent,
   ],
   imports: [
-    RouterTestingModule.withRoutes([
-      { path: '/contacts/42', component: DummyComponent }
-    ])
+    RouterTestingModule,
   ],
 })
 class TestModule {}
