@@ -1,15 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-contacts-list',
   templateUrl: './contacts-list.component.html',
   styleUrls: ['./contacts-list.component.scss']
 })
-export class ContactsListComponent implements OnInit {
+export class ContactsListComponent {
   @Input()
   contacts: any;
-
-  ngOnInit() {
-    console.info(this.contacts)
-  }
 }
