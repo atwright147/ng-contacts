@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ContactService } from '../../services/contact.service';
 import { NotificationService } from '../../services/notification.service';
 
-import { ContactFormModel } from '../../interfaces/contact-form-model.interface';
+import { IContact } from '../../interfaces/contact.interface';
 
 @Component({
   selector: 'app-contacts-form-reactive',
@@ -53,7 +53,7 @@ export class ContactsFormReactiveComponent implements OnInit, OnDestroy {
     });
 
     if (this.contactId) {
-      this.Contact.getContactById(this.contactId).subscribe((data: ContactFormModel) => {
+      this.Contact.getContactById(this.contactId).subscribe((data: IContact) => {
         // FROM: https://medium.com/@samichkhachkhi/setvalue-vs-patchvalue-angular-a64a55e912b8
         // this.contactForm.patchValue(data);  // when you want to load a partial payload
         this.contactForm.setValue(data);  // when you can guarantee a full payload

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { ContactFormModel } from '../interfaces/contact-form-model.interface';
+import { IContact } from '../interfaces/contact.interface';
 import { NotificationService } from './notification.service';
 
 @Injectable({
@@ -16,15 +16,15 @@ export class ContactService {
     private notificationService: NotificationService,
   ) {}
 
-  getContactsList(): Observable<ContactFormModel[]> {
-    return this.http.get<ContactFormModel[]>(`${this.base_url}/contacts`);
+  getContactsList(): Observable<IContact[]> {
+    return this.http.get<IContact[]>(`${this.base_url}/contacts`);
   }
 
-  getContactById(contactId: number): Observable<ContactFormModel> {
-    return this.http.get<ContactFormModel>(`${this.base_url}/contacts/${contactId}`);
+  getContactById(contactId: number): Observable<IContact> {
+    return this.http.get<IContact>(`${this.base_url}/contacts/${contactId}`);
   }
 
-  send(model: ContactFormModel) {
+  send(model: IContact) {
     return this.http.post(`${this.base_url}/contacts`, model);
   }
 }
