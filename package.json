@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "stubs": "stubby -d ./stubs/api.yml --watch",
+    "dev": "ng serve & stubby -d ./stubs/api.yml --watch",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
